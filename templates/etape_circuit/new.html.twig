@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EtapeCircuit{% endblock %}
+
+{% block body %}
+{% include ('inc/navbar.html.twig') %}
+    <h1>Create new EtapeCircuit</h1>
+
+    {{ include('etape_circuit/_form.html.twig') }}
+
+    <a href="{{ path('etape_circuit_index') }}">back to list</a>
+{% endblock %}

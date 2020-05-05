@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EtapeCircuit{% endblock %}
+
+{% block body %}
+{% include ('inc/navbar.html.twig') %}
+    <h1>EtapeCircuit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Duree_etape</th>
+                <td>{{ etape_circuit.dureeEtape }}</td>
+            </tr>
+            <tr>
+                <th>Ordre_etape</th>
+                <td>{{ etape_circuit.ordreEtape }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('etape_circuit_index') }}">back to list</a>
+
+    <a href="{{ path('etape_circuit_edit', {'code_circuit': etape_circuit.code_circuit}) }}">edit</a>
+
+    {{ include('etape_circuit/_delete_form.html.twig') }}
+{% endblock %}
