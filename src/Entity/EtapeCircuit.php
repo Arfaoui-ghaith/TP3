@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EtapeCircuit
 {
+   
   
 
     /**
@@ -22,18 +23,27 @@ class EtapeCircuit
     private $ordre_etape;
 
     /**
-     * @ORM\Id()
+     * 
      * @ORM\ManyToOne(targetEntity="App\Entity\Circuit", inversedBy="circuits")
      * @ORM\JoinColumn(nullable=false)
      */
     private $code_circuit;
 
     /**
-     * @ORM\Id()
+     * 
      * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="villes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $code_ville;
+
+    /**
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+
+  
 
 
     public function getDureeEtape(): ?string
@@ -86,5 +96,17 @@ class EtapeCircuit
 
     public function __toString(){
         return $this->code_circuit;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 }
