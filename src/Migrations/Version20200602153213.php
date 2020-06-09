@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200424152010 extends AbstractMigration
+final class Version20200602153213 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,10 +22,7 @@ final class Version20200424152010 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE etape_circuit MODIFY id INT NOT NULL');
-        $this->addSql('ALTER TABLE etape_circuit DROP PRIMARY KEY');
-        $this->addSql('ALTER TABLE etape_circuit DROP id');
-        $this->addSql('ALTER TABLE etape_circuit ADD PRIMARY KEY (code_circuit_id, code_ville_id)');
+        $this->addSql('ALTER TABLE user ADD roles JSON NOT NULL, CHANGE is_admin is_admin TINYINT(1) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -33,6 +30,6 @@ final class Version20200424152010 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE etape_circuit ADD id INT AUTO_INCREMENT NOT NULL, DROP PRIMARY KEY, ADD PRIMARY KEY (id)');
+        $this->addSql('ALTER TABLE user DROP roles, CHANGE is_admin is_admin TINYINT(1) DEFAULT \'NULL\'');
     }
 }

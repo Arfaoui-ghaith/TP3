@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200517044525 extends AbstractMigration
+final class Version20200602144359 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20200517044525 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE etape_circuit DROP PRIMARY KEY');
-        $this->addSql('ALTER TABLE etape_circuit ADD id INT NOT NULL');
-        $this->addSql('ALTER TABLE etape_circuit ADD PRIMARY KEY (id)');
+        $this->addSql('ALTER TABLE user ADD is_admin TINYINT(1) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +30,6 @@ final class Version20200517044525 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE etape_circuit DROP PRIMARY KEY');
-        $this->addSql('ALTER TABLE etape_circuit DROP id');
-        $this->addSql('ALTER TABLE etape_circuit ADD PRIMARY KEY (code_circuit_id, code_ville_id)');
+        $this->addSql('ALTER TABLE user DROP is_admin');
     }
 }
